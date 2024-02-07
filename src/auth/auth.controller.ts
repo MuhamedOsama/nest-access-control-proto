@@ -1,7 +1,14 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignupDto } from './dto/signup.dto';
 import { SigninRequestDto } from './dto/signin.dto';
+import { UseGuards, Get } from '@nestjs/common';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { ApiBearerAuth } from '@nestjs/swagger';
+import { Roles } from './decorators/roles.decorator';
+import { RoleGuard } from './guards/role.guard';
+import { PermissionGuard } from './guards/permission.guard';
+import { Permission } from './decorators/permission.decorator';
 
 @Controller('auth')
 export class AuthController {
@@ -15,5 +22,12 @@ export class AuthController {
   @Post('signin')
   signin(@Body() signinDto: SigninRequestDto) {
     return this.authService.signin(signinDto);
+  }
+  @Permission(['view_profile'])
+  @UseGuards(JwtAuthGuard, PermissionGuard)
+  @ApiBearerAuth('JWT-auth')
+  @Get('profile')
+  getProfile(@Request() req) {
+    return true;
   }
 }
