@@ -9,6 +9,7 @@ import { Roles } from './decorators/roles.decorator';
 import { RoleGuard } from './guards/role.guard';
 import { PermissionGuard } from './guards/permission.guard';
 import { Permission } from './decorators/permission.decorator';
+import { FirebaseAuthGuard } from './guards/firebase-auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -23,8 +24,8 @@ export class AuthController {
   signin(@Body() signinDto: SigninRequestDto) {
     return this.authService.signin(signinDto);
   }
-  @Permission(['view_profile'])
-  @UseGuards(JwtAuthGuard, PermissionGuard)
+  // @Permission(['view_profile'])
+  @UseGuards(FirebaseAuthGuard)
   @ApiBearerAuth('JWT-auth')
   @Get('profile')
   getProfile(@Request() req) {

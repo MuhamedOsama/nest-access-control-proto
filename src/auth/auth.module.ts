@@ -11,6 +11,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { RoleGuard } from './guards/role.guard';
 import { PermissionGuard } from './guards/permission.guard';
+import { FirebaseService } from './firebase.service';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { PermissionGuard } from './guards/permission.guard';
   providers: [
     { provide: HashingService, useClass: BcryptService },
     AuthService,
+    FirebaseService,
     JwtStrategy,
     RoleGuard,
     PermissionGuard,

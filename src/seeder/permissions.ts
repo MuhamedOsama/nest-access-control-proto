@@ -1,6 +1,6 @@
-import { Permission } from '../permission/entities/permission.entity';
+import { IPermission } from '../permission/types/permission.interface';
 
-export const permissions: any[] = [
+export const permissions: IPermission[] = [
   {
     _id: 'a2d04ac0-eb10-482c-9a82-0bca5c531e74',
     name: 'create_user',

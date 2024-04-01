@@ -1,6 +1,6 @@
-import { Role } from '../role/entities/role.entity';
+import { IRole } from '../role/types/role.interface';
 
-export const roles: any[] = [
+export const roles: IRole[] = [
   {
     _id: 'f3bf7fe3-5fb3-403f-bbbc-4f99f37109e7',
     name: 'Admin',

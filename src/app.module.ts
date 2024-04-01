@@ -6,9 +6,15 @@ import { RoleModule } from './role/role.module';
 import { PermissionModule } from './permission/permission.module';
 import { AuthModule } from './auth/auth.module';
 import { SeederService } from './seeder/seeder.service';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      // Load multiple env files or select based on NODE_ENV
+      envFilePath: ['.env', `.env.${process.env.NODE_ENV}`],
+      isGlobal: true,
+    }),
     MongooseModule.forRoot(
       'mongodb://localhost:27017/nest-access-management-proto',
     ),

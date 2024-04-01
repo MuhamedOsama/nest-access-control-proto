@@ -1,16 +1,18 @@
-import { permissions } from './../seeder/permissions';
 import { Injectable } from '@nestjs/common';
 import { IPermissionService } from './types/permission-service.interface';
 import { Permission } from './entities/permission.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { IPermission } from './types/permission.interface';
 
 @Injectable()
 export class PermissionService implements IPermissionService {
   constructor(
     @InjectModel(Permission.name) private permissionModel: Model<Permission>,
   ) {}
-  async createMultiplePermissions(permissions: Permission[]): Promise<boolean> {
+  async createMultiplePermissions(
+    permissions: IPermission[],
+  ): Promise<boolean> {
     const seededPermissionsIds = await this.permissionModel
       .find(
         {
@@ -19,7 +21,7 @@ export class PermissionService implements IPermissionService {
         { _id: 1 },
       ) // Project only the _id field
       .exec()
-      .then((results) => results.map((result) => result._id));
+      .then((results) => results.map((result) => result._id.toString()));
 
     // Prepare bulk write operations for roles that are not already seeded
     const permissionsToSeed = permissions

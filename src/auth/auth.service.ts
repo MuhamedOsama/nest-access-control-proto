@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { UnauthorizedException } from '@nestjs/common';
 import { SignupDto } from './dto/signup.dto';
 import { User } from '../user/entities/user.entity';
 import { SigninRequestDto, SigninResponseDto } from './dto/signin.dto';
@@ -7,6 +7,7 @@ import { HashingService } from '../providers/hashing/hashing.service';
 import { BadRequestException } from '@nestjs/common/exceptions';
 import { sign } from 'jsonwebtoken';
 import { roles } from '../seeder/roles';
+import { Injectable } from '@nestjs/common/decorators/core';
 
 @Injectable()
 export class AuthService {
@@ -23,7 +24,6 @@ export class AuthService {
     const password = await this.hashingService.hash(signupDto.password);
     let user = await this.userService.create({ ...signupDto, password });
     const defaultRole = roles.find((r) => r.name == 'User');
-    console.log(defaultRole, user);
     await this.userService.assignRoleToUser(user._id, defaultRole._id);
     return user;
   }

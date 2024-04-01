@@ -1,7 +1,7 @@
 import { Permission } from '../entities/permission.entity';
 
 export interface IPermissionService {
-  // Create a new permission.
+  /** Create a new permission. */
   createPermission(name: string, description?: string): Promise<Permission>;
   // Retrieve all permissions available in the system.
   findAllPermissions(): Promise<Permission[]>;
