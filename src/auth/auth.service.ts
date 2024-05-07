@@ -8,23 +8,34 @@ import { BadRequestException } from '@nestjs/common/exceptions';
 import { sign } from 'jsonwebtoken';
 import { roles } from '../seeder/roles';
 import { Injectable } from '@nestjs/common/decorators/core';
+import { LoggerService } from '@wexcute/catalyst-logger';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly userService: UserService,
     private readonly hashingService: HashingService,
+    private readonly loggerService: LoggerService,
   ) {}
 
   async signup(signupDto: SignupDto): Promise<User> {
     let isUserExists = await this.userService.findUserByEmail(signupDto.email);
     if (isUserExists) {
+      this.loggerService.log(
+        'user sign up already exists using catalyst logger',
+        {
+          email: signupDto.email,
+        },
+      );
       throw new BadRequestException('email already exists.');
     }
     const password = await this.hashingService.hash(signupDto.password);
     let user = await this.userService.create({ ...signupDto, password });
     const defaultRole = roles.find((r) => r.name == 'User');
     await this.userService.assignRoleToUser(user._id, defaultRole._id);
+    this.loggerService.log('user sign up success using catalyst logger', {
+      email: signupDto.email,
+    });
     return user;
   }
   async signin(signinDto: SigninRequestDto): Promise<SigninResponseDto> {

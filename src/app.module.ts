@@ -7,7 +7,7 @@ import { PermissionModule } from './permission/permission.module';
 import { AuthModule } from './auth/auth.module';
 import { SeederService } from './seeder/seeder.service';
 import { ConfigModule } from '@nestjs/config';
-
+import { LoggerModule } from '@wexcute/catalyst-logger';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -22,6 +22,8 @@ import { ConfigModule } from '@nestjs/config';
     RoleModule,
     PermissionModule,
     AuthModule,
+
+    // LoggerModule.forRoot(),
   ],
   controllers: [],
   providers: [AppService, SeederService],
