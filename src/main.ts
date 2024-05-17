@@ -1,9 +1,9 @@
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { NestFactory } from '@nestjs/core';
-import { Logger, ValidationPipe } from '@nestjs/common';
-import { AppModule } from './app.module';
-Logger;
+import { ValidationPipe } from '@nestjs/common';
+
 async function bootstrap() {
+  const AppModule = (await import('./app.module.js')).AppModule;
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
     .setTitle('Cats example')

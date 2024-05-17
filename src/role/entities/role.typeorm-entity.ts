@@ -17,4 +17,6 @@ export class RoleTypeorm extends BaseEntity {
 
   @Column({ nullable: false })
   isDefault: boolean;
+  @Column({ nullable: false })
+  newColumnCustom: boolean;
 }

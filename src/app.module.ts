@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 
 import { ConfigModule } from '@nestjs/config';
-import { AdminModule } from '@adminjs/nestjs';
-import { Database, Resource } from '@adminjs/typeorm';
-import AdminJS from 'adminjs';
+// import { AdminModule } from '@adminjs/nestjs';
+// import { Database, Resource } from '@adminjs/typeorm';
+// import AdminJS from 'adminjs';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -13,7 +13,7 @@ import { SeederService } from './seeder/seeder.service';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RoleTypeorm } from './role/entities/role.typeorm-entity';
-AdminJS.registerAdapter({ Database: Database, Resource: Resource });
+
 const DEFAULT_ADMIN = {
   email: 'admin@example.com',
   password: 'password',
@@ -50,22 +50,45 @@ const authenticate = async (email: string, password: string) => {
     PermissionModule,
     AuthModule,
     // AdminJS version 7 is ESM-only. In order to import it, you have to use dynamic imports.
-    AdminModule.createAdmin({
-      adminJsOptions: {
-        rootPath: '/admin',
-        resources: [RoleTypeorm],
-      },
-      auth: {
-        authenticate,
-        cookieName: 'adminjs',
-        cookiePassword: 'secret',
-      },
-      sessionOptions: {
-        resave: true,
-        saveUninitialized: true,
-        secret: 'secret',
-      },
+    import('@adminjs/nestjs').then(async ({ AdminModule }) => {
+      const { Database, Resource } = await import('@adminjs/typeorm');
+      const { AdminJS } = await import('adminjs');
+      AdminJS.registerAdapter({ Database: Database, Resource: Resource });
+
+      return AdminModule.createAdmin({
+        adminJsOptions: {
+          rootPath: '/admin',
+          resources: [RoleTypeorm],
+        },
+        auth: {
+          authenticate,
+          cookieName: 'adminjs',
+          cookiePassword: 'secret',
+        },
+        sessionOptions: {
+          resave: true,
+          saveUninitialized: true,
+          secret: 'secret',
+        },
+      });
     }),
+
+    // AdminModule.createAdmin({
+    //   adminJsOptions: {
+    //     rootPath: '/admin',
+    //     resources: [RoleTypeorm],
+    //   },
+    //   auth: {
+    //     authenticate,
+    //     cookieName: 'adminjs',
+    //     cookiePassword: 'secret',
+    //   },
+    //   sessionOptions: {
+    //     resave: true,
+    //     saveUninitialized: true,
+    //     secret: 'secret',
+    //   },
+    // }),
 
     // LoggerModule.forRoot(),
   ],
