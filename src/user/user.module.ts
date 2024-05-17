@@ -1,10 +1,8 @@
 import { Module } from '@nestjs/common';
-import { UserService } from './user.service';
-import { UserController } from './user.controller';
-import { BcryptService } from '../providers/hashing/bcrypt.service';
-import { HashingService } from '../providers/hashing/hashing.service';
+
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from './entities/user.entity';
+import { User, UserSchema } from './entities/user.entity.js';
+import { UserService } from './user.service.js';
 
 @Module({
   imports: [

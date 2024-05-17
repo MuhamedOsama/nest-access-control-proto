@@ -1,8 +1,8 @@
 import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
-import { RoleService } from '../role/role.service';
-import { roles } from './roles';
-import { permissions } from './permissions';
-import { PermissionService } from '../permission/permission.service';
+import { PermissionService } from '../permission/permission.service.js';
+import { RoleService } from '../role/role.service.js';
+import { permissions } from './permissions.js';
+import { roles } from './roles.js';
 
 @Injectable()
 export class SeederService implements OnApplicationBootstrap {

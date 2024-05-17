@@ -1,8 +1,8 @@
-import { isPermissible } from './../../utils/isPermissible';
+import { isPermissible } from './../../utils/isPermissible.js';
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { Reflector } from '@nestjs/core';
-import { Permission } from '../decorators/permission.decorator';
+import { Permission } from '../decorators/permission.decorator.js';
 
 @Injectable()
 export class PermissionGuard implements CanActivate {

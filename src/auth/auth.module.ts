@@ -1,17 +1,17 @@
 import { Module } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { AuthController } from './auth.controller';
+import { AuthService } from './auth.service.js';
+import { AuthController } from './auth.controller.js';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from '../user/entities/user.entity';
-import { UserModule } from '../user/user.module';
-import { BcryptService } from '../providers/hashing/bcrypt.service';
-import { HashingService } from '../providers/hashing/hashing.service';
+import { User, UserSchema } from '../user/entities/user.entity.js';
+import { UserModule } from '../user/user.module.js';
+import { BcryptService } from '../providers/hashing/bcrypt.service.js';
+import { HashingService } from '../providers/hashing/hashing.service.js';
 // import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
-import { JwtStrategy } from './strategies/jwt.strategy';
-import { RoleGuard } from './guards/role.guard';
-import { PermissionGuard } from './guards/permission.guard';
-import { FirebaseService } from './firebase.service';
+import { JwtStrategy } from './strategies/jwt.strategy.js';
+import { RoleGuard } from './guards/role.guard.js';
+import { PermissionGuard } from './guards/permission.guard.js';
+import { FirebaseService } from './firebase.service.js';
 import { LoggerModule, LoggerService } from '@wexcute/catalyst-logger';
 
 @Module({

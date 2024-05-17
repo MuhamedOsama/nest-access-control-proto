@@ -1,5 +1,5 @@
-import { Permission } from '../../permission/entities/permission.entity';
-import { Role } from '../entities/role.entity';
+import { Permission } from '../../permission/entities/permission.entity.js';
+import { Role } from '../entities/role.entity.js';
 
 export interface IRoleService {
   //Create a new role with a specified set of permissions.

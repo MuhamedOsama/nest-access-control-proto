@@ -1,4 +1,4 @@
-import { IRole } from '../role/types/role.interface';
+import { IRole } from '../role/types/role.interface.js';
 
 export const roles: IRole[] = [
   {

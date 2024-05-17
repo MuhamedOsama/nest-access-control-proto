@@ -1,6 +1,6 @@
-import { IRoleService } from './types/role-service.interface';
-import { Permission } from '../permission/entities/permission.entity';
-import { Role } from './entities/role.entity';
+import { IRoleService } from './types/role-service.interface.js';
+import { Permission } from '../permission/entities/permission.entity.js';
+import { Role } from './entities/role.entity.js';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';

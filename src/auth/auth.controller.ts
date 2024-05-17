@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Request } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { SignupDto } from './dto/signup.dto';
-import { SigninRequestDto } from './dto/signin.dto';
+import { AuthService } from './auth.service.js';
+import { SignupDto } from './dto/signup.dto.js';
+import { SigninRequestDto } from './dto/signin.dto.js';
 import { Get } from '@nestjs/common';
 import { ApiBearerAuth } from '@nestjs/swagger';
 
