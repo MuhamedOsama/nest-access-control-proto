@@ -5,14 +5,14 @@ import { AdminModule } from '@adminjs/nestjs';
 import { Database, Resource } from '@adminjs/typeorm';
 import AdminJS from 'adminjs';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AppService } from './app.service.js';
-import { AuthModule } from './auth/auth.module.js';
-import { PermissionModule } from './permission/permission.module.js';
-import { RoleModule } from './role/role.module.js';
-import { SeederService } from './seeder/seeder.service.js';
-import { UserModule } from './user/user.module.js';
+import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { PermissionModule } from './permission/permission.module';
+import { RoleModule } from './role/role.module';
+import { SeederService } from './seeder/seeder.service';
+import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { RoleTypeorm } from './role/entities/role.typeorm-entity.js';
+import { RoleTypeorm } from './role/entities/role.typeorm-entity';
 AdminJS.registerAdapter({ Database: Database, Resource: Resource });
 const DEFAULT_ADMIN = {
   email: 'admin@example.com',

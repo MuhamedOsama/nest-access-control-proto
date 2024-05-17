@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { IPermissionService } from './types/permission-service.interface.js';
-import { Permission } from './entities/permission.entity.js';
+import { IPermissionService } from './types/permission-service.interface';
+import { Permission } from './entities/permission.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { IPermission } from './types/permission.interface.js';
+import { IPermission } from './types/permission.interface';
 
 @Injectable()
 export class PermissionService implements IPermissionService {

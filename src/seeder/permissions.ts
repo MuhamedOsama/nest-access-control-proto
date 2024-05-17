@@ -1,4 +1,4 @@
-import { IPermission } from '../permission/types/permission.interface.js';
+import { IPermission } from '../permission/types/permission.interface';
 
 export const permissions: IPermission[] = [
   {

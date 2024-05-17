@@ -5,12 +5,12 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 // import { sign } from 'jsonwebtoken';
-import { HashingService } from '../providers/hashing/hashing.service.js';
-import { roles } from '../seeder/roles.js';
-import { User } from '../user/entities/user.entity.js';
-import { UserService } from '../user/user.service.js';
-import { SigninRequestDto, SigninResponseDto } from './dto/signin.dto.js';
-import { SignupDto } from './dto/signup.dto.js';
+import { HashingService } from '../providers/hashing/hashing.service';
+import { roles } from '../seeder/roles';
+import { User } from '../user/entities/user.entity';
+import { UserService } from '../user/user.service';
+import { SigninRequestDto, SigninResponseDto } from './dto/signin.dto';
+import { SignupDto } from './dto/signup.dto';
 
 @Injectable()
 export class AuthService {

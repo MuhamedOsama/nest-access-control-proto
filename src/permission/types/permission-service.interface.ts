@@ -1,4 +1,4 @@
-import { Permission } from '../entities/permission.entity.js';
+import { Permission } from '../entities/permission.entity';
 
 export interface IPermissionService {
   /** Create a new permission. */

@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
-    "module": "node16",
-    "moduleResolution": "node16",
     "declaration": true,
+    "module": "ESNext",
+    "target": "ES2021",
+    "esModuleInterop": true,
+    "moduleResolution": "Bundler",
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es2021",
+    "allowJs": true,
     "types": ["node"],
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
@@ -20,5 +22,6 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
   },
+  "ts-node": { "esm": true },
   "include": ["src/**/*.ts"]
 }
