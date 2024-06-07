@@ -1,4 +1,5 @@
 export interface IPermission {
   _id: string;
-  name: string;
+  subject: string;
+  action: string;
 }

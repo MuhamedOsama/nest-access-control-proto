@@ -41,7 +41,10 @@ export class AuthService {
       id: user.id,
       email: user.email,
       role: user.role.name,
-      permissions: user.role.permissions.map((r) => r.name),
+      permissions: user.role.permissions.map((r) => ({
+        subject: r.subject,
+        action: r.action,
+      })),
     };
     const token = sign(payload, 'SECRET_KEY', {
       expiresIn: '7d',

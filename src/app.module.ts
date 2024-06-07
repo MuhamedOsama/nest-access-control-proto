@@ -7,6 +7,7 @@ import { PermissionModule } from './permission/permission.module';
 import { AuthModule } from './auth/auth.module';
 import { SeederService } from './seeder/seeder.service';
 import { ConfigModule } from '@nestjs/config';
+import { CaslModule } from './casl/casl.module';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
     }),
     MongooseModule.forRoot(
-      'mongodb://localhost:27017/nest-access-management-proto',
+      'mongodb://127.0.0.1:27017/nest-access-management-proto',
     ),
     UserModule,
     RoleModule,

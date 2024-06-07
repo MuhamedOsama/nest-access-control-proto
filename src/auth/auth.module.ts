@@ -12,9 +12,11 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { RoleGuard } from './guards/role.guard';
 import { PermissionGuard } from './guards/permission.guard';
 import { FirebaseService } from './firebase.service';
+import { CaslModule } from '../casl/casl.module';
 
 @Module({
   imports: [
+    CaslModule,
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     UserModule,
     PassportModule,
