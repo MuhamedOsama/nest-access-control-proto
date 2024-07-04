@@ -7,7 +7,6 @@ import { PermissionModule } from './permission/permission.module';
 import { AuthModule } from './auth/auth.module';
 import { SeederService } from './seeder/seeder.service';
 import { ConfigModule } from '@nestjs/config';
-import { CaslModule } from './casl/casl.module';
 
 @Module({
   imports: [

@@ -1,14 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { IPermissionService } from './types/permission-service.interface';
-import { Permission } from './entities/permission.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { IPermission } from './types/permission.interface';
+import { MongoosePermissionEntity } from '@catalyst/base-entities';
 
 @Injectable()
 export class PermissionService implements IPermissionService {
   constructor(
-    @InjectModel(Permission.name) private permissionModel: Model<Permission>,
+    @InjectModel(MongoosePermissionEntity.name)
+    private permissionModel: Model<MongoosePermissionEntity>,
   ) {}
   async createMultiplePermissions(
     permissions: IPermission[],
@@ -41,20 +42,23 @@ export class PermissionService implements IPermissionService {
     // Return true if there are no new roles to seed, indicating the operation is "successful"
     return true;
   }
-  createPermission(name: string, description?: string): Promise<Permission> {
+  createPermission(
+    name: string,
+    description?: string,
+  ): Promise<MongoosePermissionEntity> {
     throw new Error('Method not implemented.');
   }
-  findAllPermissions(): Promise<Permission[]> {
+  findAllPermissions(): Promise<MongoosePermissionEntity[]> {
     throw new Error('Method not implemented.');
   }
-  findPermissionById(id: string): Promise<Permission> {
+  findPermissionById(id: string): Promise<MongoosePermissionEntity> {
     throw new Error('Method not implemented.');
   }
   updatePermission(
     id: string,
     name: string,
     description?: string,
-  ): Promise<Permission> {
+  ): Promise<MongoosePermissionEntity> {
     throw new Error('Method not implemented.');
   }
   deletePermission(id: string): Promise<void> {

@@ -1,9 +1,9 @@
 import { IRoleService } from './types/role-service.interface';
-import { Permission } from '../permission/entities/permission.entity';
 import { Role } from './entities/role.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { MongoosePermissionEntity } from '@catalyst/base-entities';
 
 @Injectable()
 export class RoleService implements IRoleService {
@@ -37,7 +37,10 @@ export class RoleService implements IRoleService {
     // Return true if there are no new roles to seed, indicating the operation is "successful"
     return true;
   }
-  createRole(name: string, permissions: Permission[]): Promise<Role> {
+  createRole(
+    name: string,
+    permissions: MongoosePermissionEntity[],
+  ): Promise<Role> {
     const createdRole = new this.roleModel({ name, permissions });
     return createdRole.save();
   }

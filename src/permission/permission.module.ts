@@ -2,12 +2,15 @@ import { Module } from '@nestjs/common';
 import { PermissionService } from './permission.service';
 import { PermissionController } from './permission.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Permission, PermissionSchema } from './entities/permission.entity';
+import {
+  MongoosePermissionEntity,
+  MongoosePermissionSchema,
+} from '@wexcute/catalyst-base-entities';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
-      { name: Permission.name, schema: PermissionSchema },
+      { name: MongoosePermissionEntity.name, schema: MongoosePermissionSchema },
     ]),
   ],
   controllers: [],

@@ -5,16 +5,8 @@ import { SigninRequestDto } from './dto/signin.dto';
 import { UseGuards, Get } from '@nestjs/common';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { ApiBearerAuth } from '@nestjs/swagger';
-import { Roles } from './decorators/roles.decorator';
-import { RoleGuard } from './guards/role.guard';
-import { PermissionGuard } from './guards/permission.guard';
-import { Permission } from './decorators/permission.decorator';
-import { FirebaseAuthGuard } from './guards/firebase-auth.guard';
-import { CheckPolicies } from './decorators/policies.decorator';
 import { GetProfileHandler } from '../policiesHandlers/GetProfile.handler';
-import { PoliciesGuard } from './guards/policies.guard';
-import { AuthGuard } from './guards/auth.guard';
-import { ManageUserHandler } from '../policiesHandlers/ManageUser.handler';
+import { CheckPolicies, PoliciesGuard } from '@catalyst/casl';
 
 @Controller('auth')
 export class AuthController {

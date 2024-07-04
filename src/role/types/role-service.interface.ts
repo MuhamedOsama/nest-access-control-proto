@@ -1,9 +1,12 @@
-import { Permission } from '../../permission/entities/permission.entity';
+import { MongoosePermissionEntity } from '@catalyst/base-entities';
 import { Role } from '../entities/role.entity';
 
 export interface IRoleService {
   //Create a new role with a specified set of permissions.
-  createRole(name: string, permissions: Permission[]): Promise<Role>;
+  createRole(
+    name: string,
+    permissions: MongoosePermissionEntity[],
+  ): Promise<Role>;
   // Retrieve all roles in the system.
   findAllRoles(): Promise<Role[]>;
   // Find a specific role by its ID.
