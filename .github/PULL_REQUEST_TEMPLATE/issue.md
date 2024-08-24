@@ -13,7 +13,7 @@
 [Describe the implemented fix]
 
 ### Testing
-- [ ] Unit tests added/updated to cover the fix
+- [ ] Unit tests added or updated to cover the fix
 - [ ] Regression testing performed
 - [ ] Manual testing to verify the fix
 
